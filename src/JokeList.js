@@ -3,6 +3,7 @@ import Joke from './Joke';
 import axios from 'axios';
 import uuid from 'uuid/v4';
 import './JokeList.scss';
+import './underline';
 
 
 
@@ -71,7 +72,7 @@ class JokeList extends Component {
         }
         return ( 
             <div className="JokeList">
-                <h1 className="JokeList__title">Safi style <span className="JokeList__title-subtitile">jokes</span></h1>
+                <h1 className="JokeList__title">Safi style <span className="underline--magical">jokes</span></h1>
                 <div className="JokeList__Joke">
                  {this.state.jokes.map(j=> 
                  <Joke key={j.id} 
@@ -82,8 +83,10 @@ class JokeList extends Component {
                  />
                  )}
                 </div>
-                <h2 className="JokeList__heading">want more cheesy jokes?</h2>
-                <button className="JokeList__btn" onClick={this.handleClick}>get more jokes</button>
+                <div className="JokeList__info">
+                 <h2 className="JokeList__heading">Want more cheesy jokes?</h2>
+                 <button className="JokeList__btn" onClick={this.handleClick}>get more jokes</button>
+                </div>
             </div>
            );
     }

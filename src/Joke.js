@@ -12,7 +12,7 @@ class Joke extends Component {
         } else if (this.props.votes >= 6) {
           return "#FFEB3B";
         } else if (this.props.votes >= 3) {
-          return "#FFC107";
+          return "#f78888";
         } else if (this.props.votes >= 0) {
           return "#F79F1F";
         } else {
@@ -40,7 +40,7 @@ class Joke extends Component {
     render() {
         return (
           <div className='Joke'>
-            <div className='Joke__buttons'>
+            <div className='Joke__buttons' tabindex="0">
               <i className='fas fa-arrow-up' onClick={this.props.upVote} />
               <span className='Joke-votes' style={{ borderColor: this.getColor() }}>
                 {this.props.votes}
