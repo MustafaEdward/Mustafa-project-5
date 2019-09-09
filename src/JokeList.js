@@ -3,7 +3,6 @@ import Joke from './Joke';
 import axios from 'axios';
 import uuid from 'uuid/v4';
 import './JokeList.scss';
-import './underline';
 
 
 
@@ -53,7 +52,6 @@ class JokeList extends Component {
                 singleJoke.id===id ? {...singleJoke, votes: singleJoke.votes + updateNumber}:singleJoke))
            }),
            ()=> window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes)) // update votes in localStorage
-       
         );  
    }
    handleClick(){
@@ -84,7 +82,7 @@ class JokeList extends Component {
                  )}
                 </div>
                 <div className="JokeList__info">
-                 <h2 className="JokeList__heading">Want more cheesy jokes?</h2>
+                 <h2 className="JokeList__heading ">Want more cheesy <span className="underline--magical">jokes?</span></h2>
                  <button className="JokeList__btn" onClick={this.handleClick}>get more jokes</button>
                 </div>
             </div>

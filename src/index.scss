@@ -2,7 +2,7 @@
   --color-primary: #f3d250;
   --color-primary-light: #5da2d5;
   --color-primary-dark:#90ccf4;
-  --color-secondary: #f78888;
+  --color-secondary: ;
 
   --color-grey-light-1: #faf9f9;
   --color-grey-light-2: #f4f2f2;
@@ -25,8 +25,8 @@ $bp-medium: 56.25em;   // 900px
 $bp-small: 37.5em;     // 600px
 $bp-smallest: 31.25em; // 500px
 
-// font-family: 'Merriweather Sans', sans-serif;
-// font-family: 'Montserrat', sans-serif
+
+//
 
 * {
   margin: 0;
@@ -47,7 +47,6 @@ html {
       font-size: 50%;
   }
 }
-
 body {
   font-family: 'Merriweather Sans', sans-serif;
   font-weight: 400;
@@ -56,6 +55,5 @@ body {
   background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
   background-size: cover;
   background-repeat: no-repeat;
-  
-  min-height: 100vh;
+ 
 }

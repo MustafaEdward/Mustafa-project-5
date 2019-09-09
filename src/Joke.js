@@ -40,8 +40,8 @@ class Joke extends Component {
     render() {
         return (
           <div className='Joke'>
-            <div className='Joke__buttons' tabindex="0">
-              <i className='fas fa-arrow-up' onClick={this.props.upVote} />
+            <div className='Joke__buttons' tabIndex="0">
+              <i className='fas fa-arrow-up' tabIndex="0" onClick={this.props.upVote} />
               <span className='Joke-votes' style={{ borderColor: this.getColor() }}>
                 {this.props.votes}
               </span>
