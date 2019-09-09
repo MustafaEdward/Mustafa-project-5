@@ -40,15 +40,15 @@ class Joke extends Component {
     render() {
         return (
           <div className='Joke'>
-            <div className='Joke-buttons'>
+            <div className='Joke__buttons'>
               <i className='fas fa-arrow-up' onClick={this.props.upVote} />
               <span className='Joke-votes' style={{ borderColor: this.getColor() }}>
                 {this.props.votes}
               </span>
               <i className='fas fa-arrow-down' onClick={this.props.downVote} />
             </div>
-            <div className='Joke-text'>{this.props.text}</div>
-            <div className='Joke-smiley'>
+            <div className='Joke__text'>{this.props.text}</div>
+            <div className='Joke__emoji'>
               <i className={this.getEmoji()} />
             </div>
           </div>

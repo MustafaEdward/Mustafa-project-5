@@ -1,18 +1,36 @@
-h1 {
-    color: #feee7d;
-    font-size: 6rem;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-  
-  }
-  
-  
-  .JokeList-joke{
-    height: 500px;
-    background: white;
-    align-self: center;
-    overflow: scroll;
-  }
-  
+.JokeList {
+     
+    &__title {
+       font-size: 10rem;
+       font-family: 'Montserrat', sans-serif;
+       font-weight: 900;
+       text-align: center;
+        &--subtitle {
+        
+        }
+    }
+
+    &__Joke {
+         overflow: scroll;
+         height: 50rem;
+    }
+    
+    &__heading {
+       font-size: 3.6rem;
+       text-align: center;
+    }
+    &__btn {
+       padding: 1.5rem 3rem;
+       background-color: red;
+       display: inherit;
+       margin: 0 auto;
+
+        &:hover {
+
+        }
+
+        &:focus {
+
+        }
+    }
+}

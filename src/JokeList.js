@@ -15,7 +15,7 @@ class JokeList extends Component {
        this.state = {
            //load 7 jokes from localStage and if nothing there ,set to an empty array.
            jokes : JSON.parse(window.localStorage.getItem("jokes")||"[]"), // JSON.parse in order to get the data from localStorage 
-                                                                          //which is a string and turn in into an object.
+           loading: false,                                                             //which is a string and turn in into an object.
        }
        this.handleClick= this.handleClick.bind(this);
    }
@@ -37,6 +37,7 @@ class JokeList extends Component {
     console.log(jokesArray );
 
     this.setState(currSt=> ({
+        loading:false,
         jokes: [...currSt.jokes , ...jokesArray]
     }),
     ()=> window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes)) // update votes in localStorage 
@@ -44,8 +45,6 @@ class JokeList extends Component {
        
     );
 }
-
-
    handelVote(id, updateNumber) {
        this.setState(
            prevSate => ({
@@ -57,13 +56,23 @@ class JokeList extends Component {
         );  
    }
    handleClick(){
-       this.getJokes();
+       this.setState({ loading: true  }, this.getJokes); //passing the function as second parameter so I make sure- 
+                                                         //user get the reults after loading
+       //this.getJokes();
    }
     render() { 
+        if(this.state.loading) {
+            return(
+                <div className="loading">
+                   <i className="far fa-8x fa-laugh fa-spin"/>
+                   <h1 jokeList-title>...Loading</h1>
+                </div>
+            )
+        }
         return ( 
             <div className="JokeList">
-                <h1 jokeList-title>Safi style jokes</h1>
-                <div className="JokeList-joke">
+                <h1 className="JokeList__title">Safi style <span className="JokeList__title-subtitile">jokes</span></h1>
+                <div className="JokeList__Joke">
                  {this.state.jokes.map(j=> 
                  <Joke key={j.id} 
                  votes={j.votes} 
@@ -73,8 +82,8 @@ class JokeList extends Component {
                  />
                  )}
                 </div>
-                <h2 JokeList="jokeList-guide">Do you want more of these cheesy jokes?</h2>
-                <button className="jokeList-button" onClick={this.handleClick}>get more jokes</button>
+                <h2 className="JokeList__heading">want more cheesy jokes?</h2>
+                <button className="JokeList__btn" onClick={this.handleClick}>get more jokes</button>
             </div>
            );
     }
