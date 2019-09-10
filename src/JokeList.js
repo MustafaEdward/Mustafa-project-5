@@ -54,7 +54,7 @@ class JokeList extends Component {
       })
   }
 }
-   handelVote(id, updateNumber) {
+   handleVote(id, updateNumber) {
        this.setState(
            prevSate => ({
                jokes: prevSate.jokes.map((singleJoke=>
@@ -68,14 +68,13 @@ class JokeList extends Component {
                                                          //user get the reults after loading
    }
 
-
     handelTab=(e)=> {  // for accessibility 
       if (e.charCode === 13) {
         let newClass = [...e.target.classList]
        if(newClass[1]=== "fa-arrow-up"){
-        this.handelVote(e.target.id, 1);
+        this.handleVote(e.target.id, 1);
        } else if(newClass[1]=== "fa-arrow-down"){
-        this.handelVote(e.target.id, -1);
+        this.handleVote(e.target.id, -1);
         } else {
         this.handleClick();
         }
@@ -96,14 +95,14 @@ class JokeList extends Component {
             <div className="JokeList">
                <a href="#btn" className="skip-link">Skip to main content.</a>
                 <h1 className="JokeList__title">Safi style <span className="underline--magical">jokes</span></h1>
-                <h3 className="JokeList__vote">click arrows to <span className ="JokeList__vote-up">Upvote</span> and <span className ="JokeList__vote-down">Downvote</span> jokes</h3>
+                <h3 className="JokeList__vote">Click arrows to <span className ="JokeList__vote-up">Upvote</span> and <span className ="JokeList__vote-down">Downvote</span> jokes</h3>
                 <div className="JokeList__Joke">
                  {jokes.map(j=> 
                  <Joke key={j.id} 
                  votes={j.votes} 
                  text={j.text} 
-                 upVote={()=>this.handelVote(j.id, 1)}
-                 downVote = {()=> this.handelVote(j.id, -1)}
+                 upVote={()=>this.handleVote(j.id, 1)}
+                 downVote = {()=> this.handleVote(j.id, -1)}
                  onPress={this.handelTab}
                  jokeID = {j.id}
                  />

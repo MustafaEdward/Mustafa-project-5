@@ -90,9 +90,9 @@
     }
 }
 .Loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
     &__title {
         font-size: 3rem;
@@ -101,7 +101,7 @@
     }
 }
 .fa-spin {
-    color: var(--color-primary);
-    font-size: 7rem;
-    margin-right: 3rem;
+        color: var(--color-primary);
+        font-size: 7rem;
+        margin-right: 3rem;
 }

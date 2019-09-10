@@ -24,7 +24,6 @@
         width: 75%;
         font-size: 1.8rem;
         @media only screen and (max-width: $bp-small) {
-            width: 75%;
             font-size: 1.5rem;
         }
     }
@@ -54,16 +53,12 @@
         align-items: center;
      }
 }
-
 .fa-arrow-up,
 .fa-arrow-down {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     margin: 1rem;
     cursor: pointer;
     transition: all 0.3s;
-    @media only screen and (max-width: $bp-small) {
-        margin: .5rem;
-    }
 }
 .fa-arrow-up:hover {
     animation-name: shake-up;
