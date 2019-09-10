@@ -79,7 +79,7 @@ class JokeList extends Component {
             return(
                 <div className="loading">
                    <i className="far fa-8x fa-laugh fa-spin"/>
-                   <h1 jokeList-title>...Loading</h1>
+                   <h1 JokeList-title>...Loading</h1>
                 </div>
             )
         }
