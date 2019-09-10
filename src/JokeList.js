@@ -4,8 +4,6 @@ import axios from 'axios';
 import uuid from 'uuid/v4';// generating a unique ID
 import './JokeList.scss';
 
-
-
 class JokeList extends Component {
     static defaultProps = {
        numberOfJokes : 10,
@@ -25,7 +23,6 @@ class JokeList extends Component {
       if(this.state.jokes.length=== 0) this.getJokes();
    }
 
-  
    async getJokes() {
     try {
     let jokesArray = [];
@@ -37,9 +34,7 @@ class JokeList extends Component {
    let newJokes = res.data.joke;
    if(!this.loadedJokes.has(newJokes)){
     jokesArray.push({id:uuid(), text: newJokes, votes: 0});
-   } else {
-       console.log(newJokes);
-   }
+   } 
  
     }
 
@@ -48,8 +43,7 @@ class JokeList extends Component {
         jokes: [...currSt.jokes , ...jokesArray]
     }),
     ()=> window.localStorage.setItem("jokes", JSON.stringify(this.state.jokes)) // update votes in localStorage 
-    //stringify because it only accpets a string
-       
+    //stringify because it only accpets a string 
     );
   } catch(e) {
       alert (`Sorry 😟😟😟 ${e} 😟😟😟` );
@@ -70,16 +64,21 @@ class JokeList extends Component {
    handleClick(){
        this.setState({ loading: true  }, this.getJokes); //passing the function as second parameter so I make sure- 
                                                          //user get the reults after loading
-       //this.getJokes();
    }
 
-   
+
+    handleTest(e) {
+      if (e.charCode === 13) {
+        alert("Enter button clicked " );
+      }
+    }
+    
     render() { 
         if(this.state.loading) {
             return(
-                <div className="loading">
+                <div className="Loading">
                    <i className="far fa-8x fa-laugh fa-spin"/>
-                   <h1 JokeList-title>...Loading</h1>
+                   <h1 className="Loading__title">...Loading</h1>
                 </div>
             )
         }
@@ -87,6 +86,7 @@ class JokeList extends Component {
         return ( 
             <div className="JokeList">
                 <h1 className="JokeList__title">Safi style <span className="underline--magical">jokes</span></h1>
+                <h3 className="JokeList__vote">Vote by clicking the arrows</h3>
                 <div className="JokeList__Joke">
                  {jokes.map(j=> 
                  <Joke key={j.id} 
@@ -94,12 +94,13 @@ class JokeList extends Component {
                  text={j.text} 
                  upVote={()=>this.handelVote(j.id, 1)}
                  downVote = {()=> this.handelVote(j.id, -1)}
+                 onPress={this.handleTest}
                  />
                  )}
                 </div>
                 <div className="JokeList__info">
-                 <h2 className="JokeList__heading ">Want more cheesy <span className="underline--magical">jokes?</span></h2>
-                 <button className="JokeList__btn" onClick={this.handleClick}>get more jokes</button>
+                 <h2 className="JokeList__heading ">Want more corny <span className="underline--magical">jokes?</span></h2>
+                 <button className="JokeList__btn" tabIndex="0" onClick={this.handleClick} onKeyPress={this.handleTest}>get more jokes</button>
                 </div>
             </div>
            );
