@@ -66,9 +66,17 @@
         }
     }
     &__vote {
-    font-size: 1.8rem;
-    color: var(--color-primary);
-    font-family: 'Montserrat', sans-serif;
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        font-family: 'Montserrat', sans-serif;
+        border: var(--color-tomato); 
+        &-up {
+            color: var(--color-secondary);
+        }
+       &-down {
+        color: var(--color-secondary);
+       }
+
     }
 }
 .underline--magical {

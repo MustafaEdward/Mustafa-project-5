@@ -41,11 +41,11 @@ class Joke extends Component {
         return (
           <div className='Joke'>
             <div className='Joke__buttons' tabIndex="0">
-              <i className='fas fa-arrow-up' tabIndex="0" onClick={this.props.upVote} onKeyPress={this.props.onPress}/>
-              <span className='Joke-votes' style={{ borderColor: this.getColor() }}>
+              <i id = {this.props.jokeID} className='fas fa-arrow-up' tabIndex="0" onClick={this.props.upVote} onKeyPress={this.props.onPress}/>
+              <span className='Joke__votes' style={{ borderColor: this.getColor() }}>
                 {this.props.votes}
               </span>
-              <i className='fas fa-arrow-down' tabIndex="0" onClick={this.props.downVote} onKeyPress={this.props.onPress}/>
+              <i id = {this.props.jokeID} className='fas fa-arrow-down' tabIndex="0" onClick={this.props.downVote} onKeyPress={this.props.onPress}/>
             </div>
             <div className='Joke__text'>{this.props.text}</div>
             <div className='Joke__emoji'>

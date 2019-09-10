@@ -34,7 +34,9 @@ class JokeList extends Component {
    let newJokes = res.data.joke;
    if(!this.loadedJokes.has(newJokes)){
     jokesArray.push({id:uuid(), text: newJokes, votes: 0});
-   } 
+   } else {
+       console.log(newJokes);
+   }
  
     }
 
@@ -67,12 +69,19 @@ class JokeList extends Component {
    }
 
 
-    handleTest(e) {
+    handelTab=(e)=> {  // for accessibility 
       if (e.charCode === 13) {
-        alert("Enter button clicked " );
-      }
+        let newClass = [...e.target.classList]
+       if(newClass[1]=== "fa-arrow-up"){
+        this.handelVote(e.target.id, 1);
+       } else if(newClass[1]=== "fa-arrow-down"){
+        this.handelVote(e.target.id, -1);
+        } else {
+        this.handleClick();
+        }
     }
-    
+    }
+
     render() { 
         if(this.state.loading) {
             return(
@@ -85,8 +94,9 @@ class JokeList extends Component {
         let jokes = this.state.jokes.sort((a,b)=> b.votes - a.votes); // sorting jokes based on votes 
         return ( 
             <div className="JokeList">
+               <a href="#btn" className="skip-link">Skip to main content.</a>
                 <h1 className="JokeList__title">Safi style <span className="underline--magical">jokes</span></h1>
-                <h3 className="JokeList__vote">Vote by clicking the arrows</h3>
+                <h3 className="JokeList__vote">click arrows to <span className ="JokeList__vote-up">Upvote</span> and <span className ="JokeList__vote-down">Downvote</span> jokes</h3>
                 <div className="JokeList__Joke">
                  {jokes.map(j=> 
                  <Joke key={j.id} 
@@ -94,13 +104,14 @@ class JokeList extends Component {
                  text={j.text} 
                  upVote={()=>this.handelVote(j.id, 1)}
                  downVote = {()=> this.handelVote(j.id, -1)}
-                 onPress={this.handleTest}
+                 onPress={this.handelTab}
+                 jokeID = {j.id}
                  />
                  )}
                 </div>
                 <div className="JokeList__info">
                  <h2 className="JokeList__heading ">Want more corny <span className="underline--magical">jokes?</span></h2>
-                 <button className="JokeList__btn" tabIndex="0" onClick={this.handleClick} onKeyPress={this.handleTest}>get more jokes</button>
+                 <button className="JokeList__btn" id="btn" tabIndex="0" onClick={this.handleClick} onKeyPress={this.handelTab}>get more jokes</button>
                 </div>
             </div>
            );
